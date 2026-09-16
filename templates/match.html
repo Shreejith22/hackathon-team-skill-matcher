@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Find Teammates</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body class="container">
+
+    {% include 'navbar.html' %}
+
+
+    <div class="card">
+
+        <h1>
+            Find Your Best Teammates 🤝
+        </h1>
+
+
+        <form action="/match" method="POST">
+
+            <label>
+                Select your profile:
+            </label>
+
+
+            <select name="user_id" required>
+
+                <option value="">
+                    -- Select Profile --
+                </option>
+
+
+                {% for user in users %}
+
+                    <option value="{{ user['id'] }}">
+                        {{ user['name'] }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <button type="submit">
+                Find Teammates 🤝
+            </button>
+
+        </form>
+
+    </div>
+
+
+    {% if selected_user %}
+
+        <div class="selected-profile">
+
+            <h2>
+                Your Profile
+            </h2>
+
+            <p>
+                <strong>Name:</strong>
+                {{ selected_user['name'] }}
+            </p>
+
+            <p>
+                <strong>Skills:</strong>
+                {{ selected_user['skills'] }}
+            </p>
+
+            <p>
+                <strong>Role:</strong>
+                {{ selected_user['role'] }}
+            </p>
+
+            <p>
+                <strong>Experience:</strong>
+                {{ selected_user['experience'] }}
+            </p>
+
+        </div>
+
+
+        <h2 class="matching-title">
+            Recommended Teammates 🚀
+        </h2>
+
+
+        {% if team_results %}
+
+            {% for result in team_results %}
+
+                <div class="match-card team-member">
+
+                    <h3>
+                        {{ result['name'] }}
+                    </h3>
+
+
+                    <p>
+                        <strong>Email:</strong>
+                        {{ result['email'] }}
+                    </p>
+
+
+                    <p>
+                        <strong>Skills:</strong>
+                        {{ result['skills'] }}
+                    </p>
+
+
+                    <p>
+                        <strong>Role:</strong>
+                        {{ result['role'] }}
+                    </p>
+
+
+                    <p>
+                        <strong>Experience:</strong>
+                        {{ result['experience'] }}
+                    </p>
+
+
+                    <p class="match-score">
+                        Match Score:
+                        {{ result['match'] }}%
+                    </p>
+
+
+                    {% if result['different'] %}
+
+                        <p class="common-skills">
+                            <strong>
+                                Complementary Skills:
+                            </strong>
+
+                            {{ result['different'] }}
+                        </p>
+
+                    {% endif %}
+
+
+                    {% if result['categories'] %}
+
+                        <p>
+                            <strong>
+                                Skill Categories:
+                            </strong>
+
+                            {{ result['categories'] }}
+                        </p>
+
+                    {% endif %}
+
+
+                    {% if result['interests'] %}
+
+                        <p>
+                            <strong>
+                                Common Interests:
+                            </strong>
+
+                            {{ result['interests'] }}
+                        </p>
+
+                    {% endif %}
+
+
+                    <p class="team-status">
+                        ✅ Recommended Team Member
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="card">
+
+                <p style="text-align: center;">
+                    No suitable teammates found.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        {% if not_matched_results %}
+
+            <h2 class="matching-title">
+                Other Profiles
+            </h2>
+
+
+            {% for result in not_matched_results %}
+
+                <div class="match-card not-matched">
+
+                    <h3>
+                        {{ result['name'] }}
+                    </h3>
+
+
+                    <p>
+                        <strong>Email:</strong>
+                        {{ result['email'] }}
+                    </p>
+
+
+                    <p>
+                        <strong>Skills:</strong>
+                        {{ result['skills'] }}
+                    </p>
+
+
+                    <p>
+                        <strong>Role:</strong>
+                        {{ result['role'] }}
+                    </p>
+
+
+                    <p>
+                        <strong>Experience:</strong>
+                        {{ result['experience'] }}
+                    </p>
+
+
+                    <p class="not-status">
+                        ❌ Not selected for the team
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endif %}
+
+
+</body>
+
+</html>

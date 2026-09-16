@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Profile - HackMatch</title>
+</head>
+
+<body class="container">
+    {% include 'navbar.html' %}
+    <div class="card">
+
+    <h1>Create Your Profile 👤</h1>
+    <p style="text-align: center;">
+    Create your profile to find the best teammates for your hackathon.
+</p>
+
+    <form action="/save_profile" method="POST">
+        <div class="card>"
+
+        <label>Name:</label>
+        <br>
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <br><br>
+
+        <label>Email:</label>
+        <br>
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <br><br>
+
+        <label>Skills:</label>
+        <br>
+        <input type="text" name="skills"
+               placeholder="Example: Python, Java, HTML" required>
+        <br><br>
+
+        <label>Experience:</label>
+        <br>
+
+        <select name="experience">
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+        </select>
+
+        <br><br>
+
+        <label>Preferred Role:</label>
+        <br>
+
+        <select name="role">
+            <option>Data Scientist</option>
+            <option>Frontend Developer</option>
+            <option>Backend Developer</option>
+            <option>UI/UX Designer</option>
+            <option>AI/ML Developer</option>
+            <option>Other</option>
+        </select>
+
+        <br><br>
+
+        <label>Interests:</label>
+        <br>
+
+        <input type="text" name="interests"
+               placeholder="Example: AI, Healthcare, Education" required>
+
+        <br><br>
+
+       <button type="submit">Create My Profile 🚀</button>
+<div class="card">
+    </form>
+</div>
+</body>
+
+</html>

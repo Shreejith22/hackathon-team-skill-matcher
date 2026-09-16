@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hackathon Skill Matcher</title>
+</head>
+
+<body class="hero">
+  {% include 'navbar.html' %}
+  <div class="card">
+
+    <h1>Hackathon Team Skill Matcher 🚀</h1>
+
+    <p>
+        Find the right teammates based on their skills,
+        interests and experience.
+    </p>
+
+  <a href="/profile">
+    <button type="button">Create Profile</button>
+  </a>
+  <br><br>
+  <a herf="http://127.0.0.1:5000/match">
+    <button type="button">Find Teammates</button> </a>
+  </div>
+  </body>
+
+</html>

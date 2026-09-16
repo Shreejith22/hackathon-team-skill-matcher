@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Profile Created</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body class="container">
+{% include 'navbar.html' %}
+    <div class="card"
+         style="text-align: center; margin-top: 100px;">
+
+        <h1>
+            Profile Created Successfully! 🎉
+        </h1>
+
+
+        <p>
+            Your profile has been saved successfully.
+        </p>
+
+
+        <p>
+            Now you can find teammates
+            with complementary skills.
+        </p>
+
+
+        <br>
+
+
+        <a href="/match" class="btn">
+            Find My Teammates 🤝
+        </a>
+
+
+        <a href="/" class="btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</body>
+
+</html>
